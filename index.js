@@ -86,6 +86,11 @@ async function run() {
         res.send(result);
     })
 
+    app.get("/my-books/:email", async (req, res) => {
+      const job = await bookCollections.find({ postedBy: req.params.email }).toArray();
+      res.send(job);
+    })
+
 
     app.get("/book/:id",async(req,res)=>{
       const id=req.params.id;
